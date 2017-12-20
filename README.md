@@ -10,7 +10,7 @@ You can generate an uberjar with `sbt assembly`
 
 To use the UI server in your own project just run the server with:
 
-    java jar dl4j-ui-server-0.9.1-assembly.jar --enableRemote --uiPort 9001
+    java -jar dl4j-ui-server-0.9.1-assembly.jar --enableRemote --uiPort 9001
     
 Then connect to it from Java code using the instructions [here](https://deeplearning4j.org/visualization)
 
