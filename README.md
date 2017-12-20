@@ -13,7 +13,15 @@ To use the UI server in your own project just run the server with:
     
 Then connect to it from Java code using the instructions [here](https://deeplearning4j.org/visualization)
 
-    StatsStorageRouter remoteUIRouter = new RemoteUIStatsStorageRouter("http://UI_MACHINE_IP:9000");
-    model.setListeners(remoteUIRouter, Collections.singletonList(new StatsListener(null)));
-    
+    // Add these imports
+    // import org.deeplearning4j.ui.stats.StatsListener;
+    // import org.deeplearning4j.api.storage.impl.RemoteUIStatsStorageRouter;
+       
+    StatsStorageRouter remoteUIRouter = new RemoteUIStatsStorageRouter("http://localhost:9001");
+    StatsListener stats = new StatsListener(remoteUIRouter, null, null, null, "some session Name", null);
+    model.setListeners(Collections.singletonList(stats));
+
+    // Or for Spark:    
+    // sparkModel.setListeners(remoteUiRouter, Collections.singletonList(new StatsListener(null)));
+       
 Your DL4J project no longer needs to depend on deeplearning4j-ui.
