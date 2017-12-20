@@ -1,28 +1,19 @@
 # dl4j-ui-server
 
-An awesome Scala-based DeepLearning4J project.
+Just a project to make a uber-jar of DL4J's UI server.
 
 ## Building
 
 You can generate an uberjar with `sbt assembly`
 
-## Training
+## Usage
 
-Use spark-submit (Local or Cluster) to train the model.
+To use the UI server in your own project just run the server with:
+    java jar dl4j-ui-server-0.9.1-assembly.jar --enableRemote --uiPort 9001
+    
+Then connect to it from Java code using the instructions [here](https://deeplearning4j.org/visualization)
 
-    $SPARK_HOME/bin/spark-submit \
-      --master 'local[*]' \
-      --class io.skymind.dl4juiserver.Train \
-      target/scala-2.10/dl4juiserver-assembly-1.0.jar \
-      --input hdfs:/data/trainInput \ 
-      --output output.model \ 
-      --epoch 5
-
-## Evaluation
-
-    $SPARK_HOME/bin/spark-submit \
-      --master 'local[*]' \
-      --class io.skymind.dl4juiserver.Evaluate \
-      target/scala-2.10/dl4juiserver-assembly-1.0.jar \
-      --input hdfs:/data/trainInput \ 
-      --model output.model
+    StatsStorageRouter remoteUIRouter = new RemoteUIStatsStorageRouter("http://UI_MACHINE_IP:9000");
+    model.setListeners(remoteUIRouter, Collections.singletonList(new StatsListener(null)));
+    
+Your DL4J project no longer needs to depend on deeplearning4j-ui.
