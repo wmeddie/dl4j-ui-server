@@ -17,7 +17,9 @@ Then connect to it from Java code using the instructions [here](https://deeplear
     // Add these imports
     // import org.deeplearning4j.ui.stats.StatsListener;
     // import org.deeplearning4j.api.storage.impl.RemoteUIStatsStorageRouter;
-       
+    
+    // Use port you specified for --uiPort and replace localhost with
+    // the hostname or IP Address of the computer running the command above.
     StatsStorageRouter remoteUIRouter = new RemoteUIStatsStorageRouter("http://localhost:9001");
     StatsListener stats = new StatsListener(remoteUIRouter, null, null, null, "some session Name", null);
     model.setListeners(Collections.singletonList(stats));
