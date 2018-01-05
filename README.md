@@ -15,7 +15,7 @@ To use the UI server in your own project just run the server with:
 Then connect to it from Java code using the instructions [here](https://deeplearning4j.org/visualization)
 
     // Add these imports
-    // import org.deeplearning4j.ui.stats.StatsListener;
+    // import org.deeplearning4j.ui.stats.StatsListener; // from deeplearning4j-ui-models
     // import org.deeplearning4j.api.storage.impl.RemoteUIStatsStorageRouter;
     
     // Use port you specified for --uiPort and replace localhost with
